@@ -1,5 +1,7 @@
 package hexlet.code.schema;
 
+import java.util.Objects;
+
 public final class NumberSchema extends BaseSchema {
 
     public NumberSchema() {
@@ -16,7 +18,7 @@ public final class NumberSchema extends BaseSchema {
 
     public NumberSchema required() {
         addCondition("required",
-                value -> value != null
+                Objects::nonNull
         );
         return this;
     }

@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public abstract class BaseSchema {
-    private Map<String, Predicate<Object>> conditions;
+    private final Map<String, Predicate<Object>> conditions;
 
     protected BaseSchema() {
         this.conditions = new HashMap<>();
