@@ -1,38 +1,32 @@
 package hexlet.code.schema;
 
-public class StringSchema {
-    private boolean isRequired;
-    private Integer minLength;
-    private String containsSubstring;
+import java.util.function.Predicate;
+import java.util.Objects;
+
+public final class StringSchema extends BaseSchema {
+
+    public StringSchema() {
+        Predicate<Object> isString = x -> (x instanceof String || x == null);
+        super.addCondition("isString", isString);
+    }
 
     public StringSchema required() {
-        this.isRequired = true;
+        Predicate<Object> isRequired = Objects::nonNull;
+        this.addCondition("required", isRequired);
+        Predicate<Object> isEmptyString = x -> !Objects.equals(x, "");
+        this.addCondition("isEmptyString", isEmptyString);
         return this;
     }
 
     public StringSchema minLength(int length) {
-        this.minLength = length;
+        Predicate<Object> minLength = x -> (x == null || x.toString().length() >= length);
+        super.addCondition("minlength", minLength);
         return this;
     }
 
-    public StringSchema contains(String substring) {
-        this.containsSubstring = substring;
+    public StringSchema contains(String data) {
+        Predicate<Object> isContains = x -> (x == null || x.toString().contains(data));
+        super.addCondition("contains", isContains);
         return this;
-    }
-
-    public boolean isValid(String data) {
-        if (isRequired && (data == null || data.isEmpty())) {
-            return false;
-        }
-
-        if (minLength != null && data.length() < minLength) {
-            return false;
-        }
-
-        if (containsSubstring != null && ! data.contains(containsSubstring)) {
-            return false;
-        }
-
-        return true;
     }
 }
