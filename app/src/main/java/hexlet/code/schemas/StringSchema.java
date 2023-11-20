@@ -24,8 +24,9 @@ public final class StringSchema extends BaseSchema {
         return this;
     }
 
-    public void contains(String data) {
+    public StringSchema contains(String data) {
         Predicate<Object> isContains = x -> (x == null || x.toString().contains(data));
         super.addCondition("contains", isContains);
+        return this;
     }
 }

@@ -134,7 +134,7 @@ public class ValidatorTest {
         Map<String, Object> human7 = new HashMap<>();
         human7.put("name", "Lora");
         human7.put("age", 25);
-        human7.put("hobbies", Map.of("one", "ride a bike"));
+        human7.put("hobbies", Map.of("one", "read books"));
         assertTrue(schema.isValid(human7));
 
         Map<String, Object> human8 = new HashMap<>();
@@ -146,7 +146,7 @@ public class ValidatorTest {
         Map<String, Object> human9 = new HashMap<>();
         human9.put("name", "Fred");
         human9.put("age", 10);
-        human9.put("hobbies", Map.of("one", "read books"));
+        human9.put("hobbies", Map.of("one", "ride a bike"));
         assertFalse(schema.isValid(human9));
     }
 }
