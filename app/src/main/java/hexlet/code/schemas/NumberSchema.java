@@ -16,11 +16,10 @@ public final class NumberSchema extends BaseSchema {
         );
     }
 
-    public NumberSchema required() {
+    public void required() {
         addCondition("required",
                 Objects::nonNull
         );
-        return this;
     }
 
     public NumberSchema positive() {

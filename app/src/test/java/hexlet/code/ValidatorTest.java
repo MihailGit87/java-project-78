@@ -57,32 +57,32 @@ public class ValidatorTest {
         NumberSchema schema = validator.number();
 
         assertTrue(schema.isValid(null));
-        assertTrue(schema.isValid(77));
-        assertTrue(schema.isValid(-77));
+        assertTrue(schema.isValid(7));
+        assertTrue(schema.isValid(-7));
         assertTrue(schema.isValid(0));
         assertFalse(schema.isValid("Hexlet"));
 
         schema.positive();
 
         assertTrue(schema.isValid(null));
-        assertTrue(schema.isValid(77));
-        assertFalse(schema.isValid(-77));
+        assertTrue(schema.isValid(7));
+        assertFalse(schema.isValid(-7));
         assertFalse(schema.isValid(0));
 
         schema.required();
 
         assertFalse(schema.isValid(null));
-        assertTrue(schema.isValid(77));
-        assertFalse(schema.isValid(-77));
+        assertTrue(schema.isValid(7));
+        assertFalse(schema.isValid(-7));
         assertFalse(schema.isValid(0));
 
-        schema.range(50, 100);
+        schema.range(5, 10);
 
-        assertTrue(schema.isValid(77));
-        assertTrue(schema.isValid(50));
-        assertTrue(schema.isValid(100));
-        assertFalse(schema.isValid(25));
-        assertFalse(schema.isValid(125));
+        assertTrue(schema.isValid(7));
+        assertTrue(schema.isValid(5));
+        assertTrue(schema.isValid(10));
+        assertFalse(schema.isValid(2));
+        assertFalse(schema.isValid(12));
     }
 
     @Test
