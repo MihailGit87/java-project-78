@@ -29,14 +29,13 @@ public class ValidatorTest {
         assertTrue(schema.isValid(null));
         assertTrue(schema.isValid(""));
         assertTrue(schema.isValid("Hexlet"));
-//        assertFalse(schema.isValid(5));
 
         schema.required();
 
         assertFalse(schema.isValid(null));
-//        assertFalse(schema.isValid(""));
+        assertFalse(schema.isValid(""));
         assertTrue(schema.isValid("Hexlet"));
-//        assertFalse(schema.isValid(5));
+        assertFalse(schema.isValid(5));
 
         schema.minLength(5);
 
