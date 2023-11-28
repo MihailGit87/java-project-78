@@ -29,9 +29,9 @@ dependencies {
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.2'
 }
 
-compileJava {
-    options.release = 20
-}
+//compileJava {
+//    options.release = 20
+//}
 
 test {
     useJUnitPlatform()

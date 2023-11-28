@@ -12,9 +12,9 @@ public abstract class BaseSchema {
     }
 
     public final boolean isValid(Object object) {
-        if (object == null) {
-            return true;
-        }
+//        if (object == null) {
+//            return true;
+//        }
         return conditions.values().stream().allMatch(n -> n.test(object));
     }
 

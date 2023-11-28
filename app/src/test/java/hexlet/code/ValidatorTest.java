@@ -29,11 +29,14 @@ public class ValidatorTest {
         assertTrue(schema.isValid(null));
         assertTrue(schema.isValid(""));
         assertTrue(schema.isValid("Hexlet"));
+//        assertFalse(schema.isValid(5));
 
         schema.required();
 
-        assertTrue(schema.isValid(null));
+        assertFalse(schema.isValid(null));
+//        assertFalse(schema.isValid(""));
         assertTrue(schema.isValid("Hexlet"));
+//        assertFalse(schema.isValid(5));
 
         schema.minLength(5);
 
@@ -69,7 +72,7 @@ public class ValidatorTest {
 
         schema.required();
 
-        assertTrue(schema.isValid(null));
+        assertFalse(schema.isValid(null));
         assertTrue(schema.isValid(7));
         assertFalse(schema.isValid(-7));
         assertFalse(schema.isValid(0));
@@ -107,7 +110,7 @@ public class ValidatorTest {
         Map<String, Object> human3 = new HashMap<>();
         human3.put("name", null);
         human3.put("age", null);
-        assertTrue(schema.isValid(human3));
+        assertFalse(schema.isValid(human3));
 
         Map<String, Object> human4 = new HashMap<>();
         human4.put("name", "");
@@ -139,7 +142,7 @@ public class ValidatorTest {
         human8.put("name", "Helena");
         human8.put("age", 30);
         human8.put("hobbies", null);
-        assertTrue(schema.isValid(human8));
+        assertFalse(schema.isValid(human8));
 
         Map<String, Object> human9 = new HashMap<>();
         human9.put("name", "Fred");
