@@ -15,13 +15,7 @@ public final class NumberSchema extends BaseSchema {
 
     public NumberSchema positive() {
         addCondition("positive",
-                value -> {
-                    if (value instanceof Integer) {
-                        return (Integer) value > 0;
-                    }
-                    return true;
-                }
-        );
+                value -> (Integer) value > 0);
         return this;
     }
 
