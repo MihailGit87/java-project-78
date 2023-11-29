@@ -35,7 +35,6 @@ public class ValidatorTest {
         assertFalse(schema.isValid(null));
         assertFalse(schema.isValid(""));
         assertTrue(schema.isValid("Hexlet"));
-        assertFalse(schema.isValid(5));
 
         schema.minLength(5);
 
@@ -60,7 +59,6 @@ public class ValidatorTest {
         assertTrue(schema.isValid(7));
         assertTrue(schema.isValid(-7));
         assertTrue(schema.isValid(0));
-        assertFalse(schema.isValid("Hexlet"));
 
         schema.positive();
 

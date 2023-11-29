@@ -5,13 +5,13 @@ import java.util.Objects;
 
 public final class StringSchema extends BaseSchema {
 
+    public StringSchema() {
+        addCondition("instanceOf", Objects::nonNull);
+    }
+
     public StringSchema required() {
-        Predicate<Object> isString = x -> (x instanceof String || x == null);
-        super.addCondition("isString", isString);
-        Predicate<Object> isRequired = Objects::nonNull;
-        this.addCondition("required", isRequired);
-        Predicate<Object> isEmptyString = x -> !Objects.equals(x, "");
-        this.addCondition("isEmptyString", isEmptyString);
+        super.setIsRequired();
+        addCondition("isNotEmpty", string -> !string.equals(""));
         return this;
     }
 

@@ -6,33 +6,23 @@ import java.util.Objects;
 public final class MapSchema extends BaseSchema {
 
     public MapSchema() {
-        super();
-        addCondition("instanceof",
-                value -> {
-                    if (value != null) {
-                        return value instanceof Map;
-                    }
-                    return true;
-                }
-        );
+        addCondition("instanceof", Objects::nonNull);
     }
 
     public MapSchema required() {
-        addCondition("required",
-                Objects::nonNull
-        );
+        super.setIsRequired();
         return this;
     }
 
     public MapSchema sizeof(int size) {
-        addCondition("sizeof",
+        super.addCondition("sizeof",
                 value -> ((Map<?, ?>) value).size() == size
         );
         return this;
     }
 
     public MapSchema shape(Map<String, BaseSchema> schemas) {
-        addCondition("shape",
+        super.addCondition("shape",
                 value -> schemas.entrySet().stream().allMatch(item -> {
                     Object object = ((Map<?, ?>) value).get(item.getKey());
                     return item.getValue().isValid(object);

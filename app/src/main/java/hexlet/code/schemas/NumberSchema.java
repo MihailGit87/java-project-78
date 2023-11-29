@@ -5,21 +5,11 @@ import java.util.Objects;
 public final class NumberSchema extends BaseSchema {
 
     public NumberSchema() {
-        super();
-        addCondition("instanceof",
-                value -> {
-                    if (value != null) {
-                        return value instanceof Integer;
-                    }
-                    return true;
-                }
-        );
+        addCondition("instanceof", Objects::nonNull);
     }
 
     public NumberSchema required() {
-        addCondition("required",
-                Objects::nonNull
-        );
+        super.setIsRequired();
         return this;
     }
 
