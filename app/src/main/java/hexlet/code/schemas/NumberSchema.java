@@ -9,6 +9,7 @@ public final class NumberSchema extends BaseSchema {
     }
 
     public NumberSchema required() {
+        addCondition("isNumber", number -> (number instanceof Integer));
         super.setIsRequired();
         return this;
     }

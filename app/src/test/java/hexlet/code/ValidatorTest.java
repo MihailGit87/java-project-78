@@ -73,6 +73,7 @@ public class ValidatorTest {
         assertTrue(schema.isValid(7));
         assertFalse(schema.isValid(-7));
         assertFalse(schema.isValid(0));
+        assertFalse(schema.isValid("5"));
 
         schema.range(5, 10);
 
