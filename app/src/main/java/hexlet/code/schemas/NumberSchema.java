@@ -1,15 +1,9 @@
 package hexlet.code.schemas;
 
-import java.util.Objects;
-
 public final class NumberSchema extends BaseSchema {
 
-    public NumberSchema() {
-        addCondition("instanceof", Objects::nonNull);
-    }
-
     public NumberSchema required() {
-        addCondition("isNumber", number -> (number instanceof Integer));
+        addCondition("isRequired", number -> (number instanceof Integer));
         super.setIsRequired();
         return this;
     }

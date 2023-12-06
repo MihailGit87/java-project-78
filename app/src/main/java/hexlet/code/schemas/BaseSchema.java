@@ -20,7 +20,10 @@ public abstract class BaseSchema {
         if (object == null) {
             return !isRequired;
         }
-        return conditions.values().stream().allMatch(n -> n.test(object));
+        if (!conditions.values().stream().allMatch(n -> n.test(object))) {
+            return false;
+        }
+        return true;
     }
 
     protected final void addCondition(String name, Predicate<Object> condition) {

@@ -1,15 +1,11 @@
 package hexlet.code.schemas;
 
 import java.util.Map;
-import java.util.Objects;
 
 public final class MapSchema extends BaseSchema {
 
-    public MapSchema() {
-        addCondition("instanceof", Objects::nonNull);
-    }
-
     public MapSchema required() {
+        addCondition("isRequired", map -> (map instanceof Map<?, ?>));
         super.setIsRequired();
         return this;
     }

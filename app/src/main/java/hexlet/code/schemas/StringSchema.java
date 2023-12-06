@@ -1,16 +1,12 @@
 package hexlet.code.schemas;
 
 import java.util.function.Predicate;
-import java.util.Objects;
 
 public final class StringSchema extends BaseSchema {
 
-    public StringSchema() {
-        addCondition("instanceOf", Objects::nonNull);
-    }
-
     public StringSchema required() {
         super.setIsRequired();
+        addCondition("isRequired", string -> (string instanceof String));
         addCondition("isNotEmpty", string -> !string.equals(""));
         return this;
     }
