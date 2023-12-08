@@ -16,13 +16,7 @@ public final class NumberSchema extends BaseSchema {
 
     public NumberSchema range(int min, int max) {
         addCondition("range",
-                value -> {
-                    if (value instanceof Integer) {
-                        return (Integer) value >= min && (Integer) value <= max;
-                    }
-                    return true;
-                }
-        );
+                value -> (Integer) value >= min && (Integer) value <= max);
         return this;
     }
 }
