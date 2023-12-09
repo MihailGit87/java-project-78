@@ -3,7 +3,8 @@ package hexlet.code.schemas;
 public final class NumberSchema extends BaseSchema {
 
     public NumberSchema required() {
-        addCondition("isRequired", number -> (number instanceof Integer));
+        addCondition("isRequired",
+                number -> (number instanceof Integer));
         super.setIsRequired();
         return this;
     }
