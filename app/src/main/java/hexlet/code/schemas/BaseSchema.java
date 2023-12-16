@@ -19,7 +19,7 @@ public abstract class BaseSchema {
     public final boolean isValid(Object object) {
 
         if (object == null) {
-            return ! isRequired;
+            return !isRequired;
         }
         return conditions.values().stream().allMatch(n -> n.test(object));
     }
