@@ -17,10 +17,15 @@ public abstract class BaseSchema {
     }
 
     public final boolean isValid(Object object) {
-        if (object == null) {
-            return !isRequired;
+        if (!isRequired && !conditions.get("isRequired").test(object)) {
+            return true;
         }
-        return conditions.values().stream().allMatch(n -> n.test(object));
+        for (Map.Entry<String, Predicate<Object>> condition : conditions.entrySet()) {
+            if (!condition.getValue().test(object)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     protected final void addCondition(String name, Predicate<Object> condition) {
