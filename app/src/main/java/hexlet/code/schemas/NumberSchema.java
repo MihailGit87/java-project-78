@@ -2,13 +2,14 @@ package hexlet.code.schemas;
 
 public final class NumberSchema extends BaseSchema {
 
+    public NumberSchema() {
+        super.conditions.put("isRequired", number -> (number instanceof Integer));
+    }
+
     public NumberSchema required() {
-        addCondition("isRequired",
-                number -> (number instanceof Integer));
         super.setIsRequired();
         return this;
     }
-
     public NumberSchema positive() {
         addCondition("positive",
                 value -> (Integer) value > 0);

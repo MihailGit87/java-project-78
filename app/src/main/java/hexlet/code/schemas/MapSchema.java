@@ -4,8 +4,11 @@ import java.util.Map;
 
 public final class MapSchema extends BaseSchema {
 
+    public MapSchema() {
+        super.conditions.put("isRequired", map -> (map instanceof Map<?, ?>));
+    }
+
     public MapSchema required() {
-        addCondition("isRequired", map -> (map instanceof Map<?, ?>));
         super.setIsRequired();
         return this;
     }

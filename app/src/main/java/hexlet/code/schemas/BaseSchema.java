@@ -6,7 +6,7 @@ import java.util.Map;
 
 public abstract class BaseSchema {
     private Boolean isRequired = Boolean.FALSE;
-    private final Map<String, Predicate<Object>> conditions;
+    protected final Map<String, Predicate<Object>> conditions;
 
     protected final void setIsRequired() {
         this.isRequired = Boolean.TRUE;

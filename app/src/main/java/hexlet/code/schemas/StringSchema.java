@@ -4,9 +4,12 @@ import java.util.function.Predicate;
 
 public final class StringSchema extends BaseSchema {
 
+    public StringSchema() {
+        super.conditions.put("isRequired", string -> (string instanceof String) && !string.equals(""));
+    }
+
     public StringSchema required() {
         super.setIsRequired();
-        addCondition("isRequired", string -> (string instanceof String) && !string.equals(""));
         return this;
     }
 
