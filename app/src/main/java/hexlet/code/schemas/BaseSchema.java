@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public abstract class BaseSchema {
-    private Boolean isRequired = Boolean.FALSE;
+    private Boolean isRequired = false;
     protected final Map<String, Predicate<Object>> conditions;
 
     protected final void setIsRequired() {
